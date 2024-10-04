@@ -132,20 +132,27 @@ plt.suptitle("Monthly Sales Trends", fontsize=16)
 st.pyplot(fig)
 
 # Pertanyaan 4
+from datetime import datetime
+
 merged_df['order_purchase_timestamp'] = pd.to_datetime(merged_df['order_purchase_timestamp'])
 
 def analyze_by_state(start_date, end_date):
+    start_date = datetime.combine(start_date, datetime.min.time())
+    end_date = datetime.combine(end_date, datetime.max.time())
+    
     filtered_data = merged_df[(merged_df['order_purchase_timestamp'] >= start_date) & (merged_df['order_purchase_timestamp'] <= end_date)]
+    
     state_sales_df = filtered_data.groupby('customer_state').agg({
         'order_id': 'nunique',
         'price': 'sum'
     }).reset_index()
+    
     return state_sales_df
 
 st.title("Analisis Penjualan Rendah per Wilayah")
 
-start_date = st.date_input("Tanggal Mulai", value=pd.to_datetime('2016-01-01'))
-end_date = st.date_input("Tanggal Akhir", value=pd.to_datetime('2018-12-31'))
+start_date = st.date_input("Tanggal Mulai", value=pd.to_datetime('2016-01-01').date())
+end_date = st.date_input("Tanggal Akhir", value=pd.to_datetime('2018-12-31').date())
 
 state_sales_df = analyze_by_state(start_date, end_date)
 
