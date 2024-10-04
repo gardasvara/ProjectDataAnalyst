@@ -10,7 +10,7 @@ st.set_page_config(
 )
 
 st.title("Gardasvara Mistortoify | ML-45")
-merged_df = pd.read_csv('all_data.csv')
+merged_df = pd.read_csv('dashboard/all_data.csv')
 
 # Pertanyaan 1
 state_sales_df = merged_df.groupby(by="customer_state").agg({
