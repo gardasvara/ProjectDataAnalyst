@@ -57,15 +57,15 @@ with col2:
     st.pyplot(fig)
 
 # Pertanyaan 2
-product_sales_by_state = merged_df.groupby(['state', 'product_category_name_english']).agg({'order_item_id': 'count'}).reset_index()
+product_sales_by_state = merged_df.groupby(['seller_state', 'product_category_name_english']).agg({'order_item_id': 'count'}).reset_index()
 product_sales_by_state.rename(columns={'order_item_id': 'product_sales_count'}, inplace=True)
 
-def top_products_by_state(state):
-    return product_sales_by_state[product_sales_by_state['state'] == state].sort_values(by='product_sales_count', ascending=False).head(10)
+def top_products_by_state(seller_state):
+    return product_sales_by_state[product_sales_by_state['seller_state'] == seller_state].sort_values(by='product_sales_count', ascending=False).head(10)
 
 st.title('Analisis Produk Paling Populer per Wilayah')
 
-state_options = product_sales_by_state['state'].unique()
+state_options = product_sales_by_state['seller_state'].unique()
 selected_state = st.selectbox('Pilih Wilayah', state_options)
 
 top_products = top_products_by_state(selected_state)
