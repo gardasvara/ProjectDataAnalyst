@@ -84,6 +84,8 @@ plt.tick_params(axis='y', labelsize=10)
 st.pyplot(fig)
 
 # Pertanyaan 3
+merged_df['order_purchase_timestamp'] = pd.to_datetime(merged_df['order_purchase_timestamp'])
+
 monthly_sales_df = merged_df.resample('M', on='order_purchase_timestamp').agg({
     'order_id': 'nunique',  
     'price': 'sum'       
