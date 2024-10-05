@@ -94,7 +94,7 @@ monthly_sales_df = merged_df.resample('M', on='order_purchase_timestamp').agg({
 monthly_sales_df['order_purchase_timestamp'] = monthly_sales_df['order_purchase_timestamp'].dt.strftime('%B %Y')
 monthly_sales_df.rename(columns={'order_id': 'order_count', 'price': 'total_sales'}, inplace=True)
 
-st.title("Monthly Sales and Order Count Patterns")
+st.title("Pola Penjualan dan Jumlah Pesanan Bulanan")
 
 fig, axs = plt.subplots(1, 2, figsize=(16, 6))  
 
