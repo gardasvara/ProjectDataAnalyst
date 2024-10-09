@@ -74,7 +74,7 @@ sns.barplot(
     x='product_sales_count', 
     y='product_category_name_english', 
     data=top_products, 
-    palette='Greens_d'
+    color='Green'
 )
 plt.title(f'Top 10 Best Selling Products in {selected_state}', loc='center', fontsize=18)
 plt.ylabel(None)
@@ -160,8 +160,7 @@ sns.barplot(
     x="price",
     y="customer_state",
     data=state_sales_df.sort_values(by="price", ascending=True).head(10),
-    palette="Reds_d",
-    hue="customer_state",
+    color="red",
     dodge=False
 )
 plt.title("Top 10 States with Lowest Sales Revenue", fontsize=18)
