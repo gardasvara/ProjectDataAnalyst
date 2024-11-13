@@ -33,7 +33,7 @@ with col1:
         x="revenue",
         y="customer_state",
         data=state_sales_df.sort_values(by="revenue", ascending=False),
-        palette="Blues_d"
+        palette="Blue"
     )
     plt.title("Total Revenue per State", loc="center", fontsize=14)
     plt.ylabel(None)
@@ -47,7 +47,7 @@ with col2:
         x="order_count",
         y="customer_state",
         data=state_sales_df.sort_values(by="order_count", ascending=False),
-        palette="Blues_d"
+        palette="Blue"
     )
     plt.title("Total Number of Orders per State", loc="center", fontsize=14)
     plt.ylabel(None)
@@ -74,7 +74,7 @@ sns.barplot(
     x='product_sales_count', 
     y='product_category_name_english', 
     data=top_products, 
-    color='Green'
+    color='Orange'
 )
 plt.title(f'Top 10 Best Selling Products in {selected_state}', loc='center', fontsize=18)
 plt.ylabel(None)
@@ -102,7 +102,7 @@ sns.barplot(
     y="total_sales",
     hue="order_purchase_timestamp",
     data=monthly_sales_df,
-    palette="Blues_d",  
+    palette="Blue",  
     legend=False,
     ax=axs[0]
 )
@@ -117,7 +117,7 @@ sns.barplot(
     y="order_count",
     hue="order_purchase_timestamp",
     data=monthly_sales_df,
-    palette="Greens_d",  
+    palette="Green",  
     legend=False,
     ax=axs[1]
 )
